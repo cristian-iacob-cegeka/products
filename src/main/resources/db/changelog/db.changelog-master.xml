@@ -6,11 +6,14 @@
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
     <changeSet id="1_add_products_table" author="Cristian Iacob">
-        <createTable tableName="PRODUCT">
+        <createTable tableName="product">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="DECIMAL(16,2)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
