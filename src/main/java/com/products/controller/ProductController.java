@@ -1,6 +1,8 @@
 package com.products.controller;
 
 import com.products.entity.Product;
+import com.products.mapper.ProductMapper;
+import com.products.model.CreateProductDTO;
 import com.products.service.ProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -23,11 +25,14 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 public class ProductController {
 
     private ProductService productService;
+    private ProductMapper productMapper;
 
     @PostMapping(consumes = APPLICATION_JSON_VALUE)
-    public ResponseEntity<Product> create(@RequestBody Product product) {
+    public ResponseEntity<Product> create(@RequestBody CreateProductDTO createProductDTO) {
 
+        Product product = productMapper.toProduct(createProductDTO);
         Product createdProduct = productService.create(product);
+
         return ResponseEntity.ok(createdProduct);
     }
 
