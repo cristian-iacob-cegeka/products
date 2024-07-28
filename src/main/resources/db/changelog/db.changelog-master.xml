@@ -5,17 +5,11 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <changeSet id="1_add_products_table" author="Cristian Iacob">
-        <createTable tableName="product">
-            <column name="id" type="bigint" autoIncrement="true">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
-            <column name="name" type="varchar(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="price" type="DECIMAL(16,2)">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-    </changeSet>
+    <include file="resources/db/changelog/1_add_user_table.xml"/>
+    <include file="resources/db/changelog/2_add_role_table.xml"/>
+    <include file="resources/db/changelog/3_add_user_role_table.xml"/>
+    <include file="resources/db/changelog/4_add_indexes.xml"/>
+    <include file="resources/db/changelog/5_insert_roles.xml"/>
+    <include file="resources/db/changelog/6_insert_users.xml"/>
+    <include file="resources/db/changelog/7_add_product_table.xml"/>
 </databaseChangeLog>
