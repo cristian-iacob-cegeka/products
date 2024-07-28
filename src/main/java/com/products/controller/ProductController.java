@@ -39,6 +39,7 @@ public class ProductController {
         return ResponseEntity.ok(productDTO);
     }
 
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @GetMapping
     public ResponseEntity<List<ProductDTO>> findAll() {
 
