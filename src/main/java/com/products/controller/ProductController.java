@@ -3,6 +3,7 @@ package com.products.controller;
 import com.products.entity.Product;
 import com.products.mapper.ProductMapper;
 import com.products.model.CreateProductDTO;
+import com.products.model.ProductDTO;
 import com.products.service.ProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -28,26 +29,29 @@ public class ProductController {
     private ProductMapper productMapper;
 
     @PostMapping(consumes = APPLICATION_JSON_VALUE)
-    public ResponseEntity<Product> create(@RequestBody CreateProductDTO createProductDTO) {
+    public ResponseEntity<ProductDTO> create(@RequestBody CreateProductDTO createProductDTO) {
 
         Product product = productMapper.toProduct(createProductDTO);
         Product createdProduct = productService.create(product);
-
-        return ResponseEntity.ok(createdProduct);
+        ProductDTO productDTO = productMapper.toProductDTO(createdProduct);
+        return ResponseEntity.ok(productDTO);
     }
 
     @GetMapping
-    public ResponseEntity<List<Product>> findAll() {
+    public ResponseEntity<List<ProductDTO>> findAll() {
 
         List<Product> products = productService.findAll();
-        return ResponseEntity.ok(products);
+        List<ProductDTO> productDTOs = productMapper.toProductDTOs(products);
+        return ResponseEntity.ok(productDTOs);
     }
 
     @PatchMapping(value = "/{id}/update-price/{price}")
-    public ResponseEntity<Product> updatePrice(@PathVariable Long id,
-                                               @PathVariable BigDecimal price) {
+    public ResponseEntity<ProductDTO> updatePrice(@PathVariable Long id,
+                                                  @PathVariable BigDecimal price) {
 
         Product product = productService.updatePrice(id, price);
-        return ResponseEntity.ok(product);
+        ProductDTO productDTO = productMapper.toProductDTO(product);
+
+        return ResponseEntity.ok(productDTO);
     }
 }
