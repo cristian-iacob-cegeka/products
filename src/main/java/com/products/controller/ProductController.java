@@ -1,9 +1,9 @@
 package com.products.controller;
 
+import com.products.controller.model.CreateProductDTO;
+import com.products.controller.model.ProductDTO;
 import com.products.entity.Product;
 import com.products.mapper.ProductMapper;
-import com.products.model.CreateProductDTO;
-import com.products.model.ProductDTO;
 import com.products.service.ProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;

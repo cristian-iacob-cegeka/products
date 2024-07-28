@@ -1,8 +1,8 @@
 package com.products.mapper;
 
+import com.products.controller.model.CreateProductDTO;
+import com.products.controller.model.ProductDTO;
 import com.products.entity.Product;
-import com.products.model.CreateProductDTO;
-import com.products.model.ProductDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

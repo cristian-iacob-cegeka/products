@@ -1,6 +1,7 @@
 package com.products.service;
 
 import com.products.entity.Product;
+import com.products.exception.ProductNotFoundException;
 import com.products.repository.ProductRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
@@ -32,7 +33,7 @@ public class ProductService {
             product.get().setPrice(price);
             return productRepository.save(product.get());
         } else {
-            throw new RuntimeException("Product not found");
+            throw new ProductNotFoundException("Product not found");
         }
     }
 }

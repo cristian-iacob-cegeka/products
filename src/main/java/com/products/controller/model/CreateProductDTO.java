@@ -1,7 +1,6 @@
-package com.products.model;
+package com.products.controller.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,10 +13,10 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Setter
 @Getter
-@Builder
-public class ProductDTO {
+public class CreateProductDTO {
 
-    private Long id;
+    @NotEmpty
     private String name;
+    @NotNull
     private BigDecimal price;
 }
